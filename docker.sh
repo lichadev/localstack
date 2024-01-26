@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# pass in the docker username and password as args
+if [ $1 = "" ] || [ $2 = "" ]; then
+  echo "Error: please provide docker username and password as args"
+  exit 1
+fi
+# could be through .env files or even using a third language as "middle-man" to pass the credentials
+# for now we will use the args
 DOCKER_USER=$1
 DOCKER_PASS=$2
 
