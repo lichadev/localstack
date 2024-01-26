@@ -1,10 +1,15 @@
 #!/bin/bash
+DOCKER_USER=$1
+DOCKER_PASS=$2
+
 # check if docker is installed
 function docker_check {
   if [ ! -x "$(command -v docker)" ]; then
     echo 'Error: docker is not installed.' >&2
     exit 1
   fi
+  #log into a docker account
+  docker login -u $DOCKER_USER -p $DOCKER_PASS
   docker pull localstack/localstack:latest
   if [ ! $? -eq 0 ]; then
     echo "Error: docker image localstack/localstack:latest not found"
